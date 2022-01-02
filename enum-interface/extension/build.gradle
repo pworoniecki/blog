@@ -1,0 +1,14 @@
+plugins {
+    id 'java'
+}
+
+group 'pl.woroniecki.enuminterface'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation project(':core')
+}
