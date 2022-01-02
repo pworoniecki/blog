@@ -14,8 +14,8 @@ public class SampleGameRunner {
   public static void main(String[] args) {
     Character player1 = new Character("Player 1", 0, 0, BasicGameStrategies.ONLY_ATTACK_ENEMIES);
     Character player2 = new Character("Player 2", 50, 50, BasicGameStrategies.COLLECT_ITEMS_THEN_ATTACK);
-    Character player3 = new Character("Player 3", 70, 70, ExtendedStrategies.COLLECT_HEALTH_POTION_IF_LOW_HP);
-    Character player4 = new Character("Player 4", 90, 90, ExtendedStrategies.COLLECT_MAGIC_POTION_IF_LOW_MANA);
+    Character player3 = new Character("Player 3", 70, 70, AdditionalGameStrategies.COLLECT_HEALTH_POTION_IF_LOW_HP);
+    Character player4 = new Character("Player 4", 90, 90, AdditionalGameStrategies.COLLECT_MAGIC_POTION_IF_LOW_MANA);
     Item healthPotion1 = new Item(ItemType.HEALTH_POTION, 20, 20);
     Item healthPotion2 = new Item(ItemType.HEALTH_POTION, 40, 40);
     Item healthPotion3 = new Item(ItemType.HEALTH_POTION, 60, 60);

@@ -8,7 +8,8 @@ import pl.woroniecki.enuminterface.core.strategy.GameStrategy;
 
 import java.util.Optional;
 
-public enum ExtendedStrategies implements GameStrategy {
+public enum AdditionalGameStrategies implements GameStrategy {
+
   COLLECT_HEALTH_POTION_IF_LOW_HP {
     @Override
     public void performAction(Game game, Character character) {
