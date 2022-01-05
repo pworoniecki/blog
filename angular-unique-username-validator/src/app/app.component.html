@@ -1,0 +1,61 @@
+<div>
+  <h2>Registration form - unique username validation</h2>
+  <h3>Description</h3>
+  <p>
+    This app presents example of how to implement asynchronous validator to
+    check if username entered by user is unique, i.e. there is no other user
+    with the same username. This is useful, e.g. in registration forms to
+    quickly provide feedback to user - before form is submitted. This is
+    implemented for both kind of forms: reactive forms and template-driven
+    forms.
+  </p>
+  <p>
+    Always remember about additional validation on backend side, this is only
+    client-side validation.
+  </p>
+
+  <h3>Data</h3>
+  <p>
+    The following users already exist in DB (in-memory DB used by this app):
+  </p>
+  <ul>
+    <li *ngFor="let user of getExistingUsers()">{{ user }}</li>
+  </ul>
+  <p>
+    If you enter one of these usernames below in input fields on forms, then the
+    forms will be marked as INVALID during validation.
+  </p>
+
+  <h3>Reactive form</h3>
+  <p>
+    This form has additionally two synchronous validators attached which are
+    running before async validator is invoked. The sync validators are: required
+    and minLength(3) so until you enter string of length 3, async validator
+    won't be invoked.
+  </p>
+  <form [formGroup]="registrationForm">
+    <label for="username">Username: </label>
+    <input id="username" type="text" formControlName="username" />
+  </form>
+  <p>Registration form status: {{ registrationForm.status }}.</p>
+  <p>Errors: {{ getReactiveFormErrors() }}</p>
+
+  <h3>Template-driven form</h3>
+  <p>
+    This form has only async user dupliated validator attached so it will be
+    triggered after each input's change
+  </p>
+  <form #registrationTemplateDrivenForm="ngForm">
+    <label for="username">Username: </label>
+    <input
+      id="username"
+      type="text"
+      name="username"
+      unique-username-validator
+      ngModel
+      #username="ngModel"
+    />
+  </form>
+  <p>Registration form status: {{ registrationTemplateDrivenForm.status }}.</p>
+  <p>Errors: {{ getTemplateDrivenFormErrors() }}</p>
+</div>
