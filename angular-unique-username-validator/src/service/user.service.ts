@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { first, map, Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { User } from '../model/user';
 
 @Injectable({ providedIn: 'root' })
@@ -15,9 +15,8 @@ export class UserService {
    * - an empty array if there is no user with given username exists
    */
   userExists(username: string): Observable<boolean> {
-    return this.http.get<User[]>('api/users', { params: { username } }).pipe(
-      map((matchingUsers) => matchingUsers.length > 0),
-      first()
-    );
+    return this.http
+      .get<User[]>('api/users', { params: { username } })
+      .pipe(map((matchingUsers) => matchingUsers.length > 0));
   }
 }

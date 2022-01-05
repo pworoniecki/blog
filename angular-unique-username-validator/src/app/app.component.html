@@ -35,7 +35,12 @@
   </p>
   <form [formGroup]="registrationForm">
     <label for="username">Username: </label>
-    <input id="username" type="text" formControlName="username" />
+    <input
+      id="username"
+      type="text"
+      formControlName="username"
+      autocomplete="off"
+    />
   </form>
   <p>Registration form status: {{ registrationForm.status }}.</p>
   <p>Errors: {{ getReactiveFormErrors() }}</p>
@@ -54,6 +59,7 @@
       unique-username-validator
       ngModel
       #username="ngModel"
+      autocomplete="off"
     />
   </form>
   <p>Registration form status: {{ registrationTemplateDrivenForm.status }}.</p>
