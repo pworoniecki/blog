@@ -17,8 +17,8 @@ export class MockApiService implements InMemoryDbService {
     };
   }
 
-  get(requestInfo: RequestInfo): Observable<User> {
-    const request: HttpRequest<User> = requestInfo.req as HttpRequest<User>;
+  get(requestInfo: RequestInfo): Observable<User[]> {
+    const request: HttpRequest<User[]> = requestInfo.req as HttpRequest<User[]>;
     const username = request.params.get('username');
     const existingUsers: User[] = requestInfo.collection;
     const user: User = existingUsers.find((user) => user.username === username);
@@ -28,7 +28,7 @@ export class MockApiService implements InMemoryDbService {
       url: requestInfo.url,
     };
     if (user) {
-      options.body = { user };
+      options.body = [user];
       options.status = 200;
     } else {
       options.status = 404;

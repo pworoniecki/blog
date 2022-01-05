@@ -14,7 +14,7 @@ export class UserService {
    * if there is 404 - it means that such user doesn't exist.
    */
   userExists(username: string): Observable<boolean> {
-    return this.http.get<User>('api/users', { params: { username } }).pipe(
+    return this.http.get<User[]>('api/users', { params: { username } }).pipe(
       mapTo(true),
       catchError((error: HttpErrorResponse) => {
         if (error.status == 404) {
