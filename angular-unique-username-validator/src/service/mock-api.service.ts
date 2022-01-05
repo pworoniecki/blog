@@ -26,12 +26,12 @@ export class MockApiService implements InMemoryDbService {
     const options: ResponseOptions = {
       headers: requestInfo.headers,
       url: requestInfo.url,
+      status: 200,
     };
     if (user) {
       options.body = [user];
-      options.status = 200;
     } else {
-      options.status = 404;
+      options.body = [];
     }
     return requestInfo.utils.createResponse$(() => options);
   }
